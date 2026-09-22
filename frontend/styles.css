@@ -1,0 +1,219 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background: #f5f6f8;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+}
+
+/* Header */
+
+.site-header {
+    background: #8b0000;
+    color: white;
+    padding: 2rem 0;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.site-header p {
+    margin: 0.4rem 0 0;
+}
+
+/* Navigation */
+
+.site-nav {
+    background: #222;
+}
+
+.nav-container {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.site-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.site-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main */
+
+main {
+    padding: 3rem 0;
+}
+
+.registration-section {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.intro,
+.information-section,
+form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    margin-top: 0;
+}
+
+/* Form */
+
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #888;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: white;
+}
+
+input:focus,
+select:focus,
+button:focus,
+a:focus {
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+}
+
+button {
+    width: 100%;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    background: #8b0000;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #650000;
+}
+
+button:disabled {
+    background: #888;
+    cursor: not-allowed;
+}
+
+.field-error {
+    display: block;
+    color: #b00020;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+.form-message {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    min-height: 20px;
+}
+
+.form-message.success {
+    background: #e7f6ec;
+    color: #146c2e;
+    border: 1px solid #79c88c;
+}
+
+.form-message.error {
+    background: #fdecec;
+    color: #a00000;
+    border: 1px solid #e09a9a;
+}
+
+.form-message.loading {
+    background: #fff5d6;
+    color: #684f00;
+    border: 1px solid #e3c766;
+}
+
+/* Information section */
+
+.information-section {
+    margin-top: 2rem;
+}
+
+/* Footer */
+
+footer {
+    background: #222;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* Responsive design */
+
+@media (max-width: 700px) {
+
+    .registration-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .site-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    main {
+        padding: 1.5rem 0;
+    }
+
+    .intro,
+    .information-section,
+    form {
+        padding: 1.2rem;
+    }
+
+    input,
+    select,
+    button {
+        font-size: 1rem;
+        min-height: 48px;
+    }
+}
