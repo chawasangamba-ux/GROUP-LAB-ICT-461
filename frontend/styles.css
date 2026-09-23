@@ -1,3 +1,7 @@
+/* ================================
+   GLOBAL STYLES
+================================ */
+
 * {
     box-sizing: border-box;
 }
@@ -14,12 +18,17 @@ body {
     background: #f5f6f8;
 }
 
+/* Main container */
 .container {
-    width: min(1100px, 92%);
+    width: 92%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Header */
+
+/* ================================
+   HEADER
+================================ */
 
 .site-header {
     background: #8b0000;
@@ -29,14 +38,18 @@ body {
 
 .site-header h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
 .site-header p {
-    margin: 0.4rem 0 0;
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
 }
 
-/* Navigation */
+
+/* ================================
+   NAVIGATION
+================================ */
 
 .site-nav {
     background: #222;
@@ -44,6 +57,7 @@ body {
 
 .nav-container {
     display: flex;
+    align-items: center;
     gap: 2rem;
     padding: 1rem 0;
 }
@@ -58,18 +72,44 @@ body {
     text-decoration: underline;
 }
 
-/* Main */
+
+/* ================================
+   MAIN CONTENT
+================================ */
 
 main {
     padding: 3rem 0;
 }
 
+
+/*
+   FLEXBOX LAYOUT
+
+   Desktop:
+   Introduction | Registration Form
+
+   The two sections sit beside each other.
+*/
+
 .registration-section {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 3rem;
-    align-items: start;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
 }
+
+/* Left side */
+.intro {
+    flex: 1;
+}
+
+/* Right side */
+.registration-section form {
+    flex: 1.2;
+}
+
+
+/* Shared card styling */
 
 .intro,
 .information-section,
@@ -84,7 +124,27 @@ h2 {
     margin-top: 0;
 }
 
-/* Form */
+/* ================================
+   FORM
+================================ */
+
+/*
+   FORM GRID LAYOUT
+
+   Desktop:
+
+   Student Name        Student ID
+   Programme           Course
+
+   The form uses two columns.
+*/
+
+.registration-section form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5rem;
+    row-gap: 0.5rem;
+}
 
 .form-group {
     margin-bottom: 1.3rem;
@@ -106,6 +166,24 @@ select {
     background: white;
 }
 
+
+/*
+   Make the submit button and
+   form message span both columns.
+*/
+
+.registration-section form button {
+    grid-column: 1 / -1;
+}
+
+.registration-section form .form-message {
+    grid-column: 1 / -1;
+}
+
+/* ================================
+   KEYBOARD ACCESSIBILITY
+================================ */
+
 input:focus,
 select:focus,
 button:focus,
@@ -113,6 +191,11 @@ a:focus {
     outline: 3px solid #ffbf47;
     outline-offset: 2px;
 }
+
+
+/* ================================
+   BUTTON
+================================ */
 
 button {
     width: 100%;
@@ -134,6 +217,11 @@ button:disabled {
     background: #888;
     cursor: not-allowed;
 }
+
+
+/* ================================
+   FORM VALIDATION MESSAGES
+================================ */
 
 .field-error {
     display: block;
@@ -167,13 +255,19 @@ button:disabled {
     border: 1px solid #e3c766;
 }
 
-/* Information section */
+
+/* ================================
+   INFORMATION SECTION
+================================ */
 
 .information-section {
     margin-top: 2rem;
 }
 
-/* Footer */
+
+/* ================================
+   FOOTER
+================================ */
 
 footer {
     background: #222;
@@ -182,24 +276,56 @@ footer {
     text-align: center;
 }
 
-/* Responsive design */
+
+/* =================================================
+   360px MOBILE RESPONSIVE LAYOUT
+================================================= */
+
+/*
+   At 700px and below, Flexbox changes from
+   horizontal to vertical.
+
+   This includes the required 360px viewport.
+*/
 
 @media (max-width: 700px) {
 
+    /* Stack the main sections */
     .registration-section {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 1.5rem;
     }
 
+    /* Make both sections full width */
+    .intro,
+    .registration-section form {
+        width: 100%;
+        flex: none;
+    }
+
+    /* FORM becomes one column */
+    .registration-form form {
+        grid-template-columns: 1fr;
+    }
+
+    /* Submit button uses the single column */
+    .registration-form button {
+        grid-column: 1;
+    }
+
+    /* Smaller heading */
     .site-header h1 {
         font-size: 1.5rem;
     }
 
+    /* Stack navigation links */
     .nav-container {
         flex-direction: column;
+        align-items: flex-start;
         gap: 0.5rem;
     }
 
+    /* Reduce spacing */
     main {
         padding: 1.5rem 0;
     }
@@ -210,10 +336,52 @@ footer {
         padding: 1.2rem;
     }
 
+    /* Make controls comfortable for touch */
     input,
     select,
     button {
         font-size: 1rem;
+        min-height: 48px;
+    }
+}
+
+/* =================================================
+   VERY SMALL SCREENS
+   360px
+================================================= */
+
+@media (max-width: 360px) {
+
+    .container {
+        width: 94%;
+    }
+
+    .site-header {
+        padding: 1.5rem 0;
+    }
+
+    .site-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .site-header p {
+        font-size: 0.9rem;
+    }
+
+    .intro,
+    .information-section,
+    form {
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    input,
+    select,
+    button {
+        width: 100%;
         min-height: 48px;
     }
 }
